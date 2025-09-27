@@ -24,7 +24,7 @@ export class FlexpriceClient {
       const response = await fetch(`${this.baseUrl}/events`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${this.apiKey}`,
+          Authorization: `api_key=${this.apiKey}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -36,6 +36,8 @@ export class FlexpriceClient {
       })
 
       if (!response.ok) {
+        const errorBody = await response.text()
+        console.error("[v0] Flexprice API error response:", errorBody)
         throw new Error(`Flexprice API error: ${response.status}`)
       }
 
@@ -59,11 +61,13 @@ export class FlexpriceClient {
 
       const response = await fetch(`${this.baseUrl}/usage?${params}`, {
         headers: {
-          Authorization: `Bearer ${this.apiKey}`,
+          Authorization: `api_key=${this.apiKey}`,
         },
       })
 
       if (!response.ok) {
+        const errorBody = await response.text()
+        console.error("[v0] Flexprice API error response:", errorBody)
         throw new Error(`Flexprice API error: ${response.status}`)
       }
 

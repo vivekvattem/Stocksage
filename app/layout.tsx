@@ -1,16 +1,17 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
-import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Suspense } from "react"
-import { Bebas_Neue as V0_Font_Bebas_Neue, Space_Mono as V0_Font_Space_Mono, Roboto as V0_Font_Roboto } from 'next/font/google'
+import {
+  Bebas_Neue as V0_Font_Bebas_Neue,
+  Space_Mono as V0_Font_Space_Mono,
+  Roboto as V0_Font_Roboto,
+} from "next/font/google"
 
 // Initialize fonts
-V0_Font_Bebas_Neue({ weight: ["400"] })
-V0_Font_Space_Mono({ weight: ["400","700"] })
-V0_Font_Roboto({ weight: ["100","200","300","400","500","600","700","800","900"] })
+const bebasNeue = V0_Font_Bebas_Neue({ weight: ["400"] })
+const spaceMono = V0_Font_Space_Mono({ weight: ["400", "700"] })
+const roboto = V0_Font_Roboto({ weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"] })
 
 export const metadata: Metadata = {
   title: "StockSage - Smart Stock Consultant Agent",
@@ -25,11 +26,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <Suspense>
-          {children}
-          <Analytics />
-        </Suspense>
+      <body className={`font-sans ${bebasNeue.variable} ${spaceMono.variable} ${roboto.variable}`}>
+        <Suspense>{children}</Suspense>
       </body>
     </html>
   )

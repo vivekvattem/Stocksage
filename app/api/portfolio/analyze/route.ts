@@ -106,7 +106,7 @@ Key Insights: ${ruleBasedAnalysis.keyInsights?.join(" ") || "None"}
 Provide a concise, beginner-friendly overall assessment and recommendation in 2-3 sentences. Focus on the big picture strategy rather than individual stocks.`
 
       const { text } = await generateText({
-        model: "openai/gpt-4o-mini",
+        model: "google/gemini-1.5-flash",
         prompt,
         maxOutputTokens: 200,
         temperature: 0.7,
